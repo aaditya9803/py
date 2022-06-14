@@ -5,12 +5,12 @@ window.title("Convert km/Miles")
 
 
     
-miles = Label(text="Enter miles")
+miles = Label(text="Enter miles", font = ("Arial",10,"bold"))
 miles.grid(row=3, column= 2, pady = 20)
 miles_entry = Entry(width=10)
 miles_entry.grid(row = 3, column = 3)
 miles_entry.focus()
-km = Label(text = "In Kilometers")
+km = Label(text = "In Kilometers",font = ("Arial",10,"bold"))
 km.grid(row=5, column =2)
 
 km_out = Text(height=1, width=10)
