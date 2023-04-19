@@ -4,7 +4,7 @@ import random
 import json
 
 window = Tk()
-window.title("Password Manager")
+window.title("NE's Password Manager")
 window.config(padx=50,pady=50)
 
 def search():
@@ -94,7 +94,7 @@ def generate_pass():
     return b
 
 canvas = Canvas(height=200, width=200)
-canvas_img = PhotoImage(file="password manager/logo.png")
+canvas_img = PhotoImage(file="password manager/lock.png")
 canvas.create_image(100,100,image=canvas_img)
 canvas.grid(row=0,column=1, sticky=W)
 
