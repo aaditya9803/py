@@ -1,20 +1,41 @@
-func = input("enter function - ")
-# ax^2+bx+c
-# a = func.split('+')
-forsquare = []
-print (func)
-for _ in func:
-    forsquare = forsquare + [*_]
-forsquare = forsquare + [""]
-print (forsquare)
-for i in range(len(forsquare)):
-    if (forsquare[i].isalpha() == True) and (forsquare[i] == "^"):
-        
-    if forsquare[i] == "^":
-        forsquare[i-2] = int(forsquare[i-2]) * int(forsquare[i+1])
-        forsquare[i+1] = int(forsquare[i+1])-1        
-        forsquare[i] = "**"
-    # if (forsquare[i].isalpha()) and (forsquare[i+1].isalpha()) == True:
-    #     print("hello")
-            
-print (forsquare)
+func ="2123x^2133"
+def differentation(the_func):
+    i =0
+    if the_func.isdigit() == True:
+        return ""
+    else:
+        the_func = [*the_func]
+        for i in range(len(the_func)):
+            if '^' in the_func:
+                if i==0 and the_func[i] == 'x':
+                    square = ''.join(the_func[i+2:])
+                    square = int(square) - 1
+                    square = str(square)
+                    a = the_func[i+2:]
+                    expression = a + ['x'] + ['^'] + [*square]
+                    return expression
+                else:
+                    if the_func[i] == '^':
+                        square = ''.join(the_func[i+1:])
+                        square = int(square)
+                        a = ''.join(the_func[:i-1])
+                        a = int(a) * square
+                        square = square - 1
+                        expression = [*str(a)] + ['x'] + ['^'] + [*str(square)]
+                        return expression
+                        
+            elif '^' not in the_func:
+                [*the_func].remove('x')
+                    
+                    
+print (differentation(func))
+
+
+
+
+# for ii in range(len(the_func)):
+#                     if the_func[ii] == 'x':
+#                         a = the_func[ii+1:]
+#                         return a
+#                     # return "hello"
+                    
