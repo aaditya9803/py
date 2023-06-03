@@ -1,8 +1,8 @@
-func ="2123x^2133"
+func ="-3x^2"
 def differentation(the_func):
     i =0
     if the_func.isdigit() == True:
-        return ""
+        return [i]
     else:
         the_func = [*the_func]
         for i in range(len(the_func)):
@@ -25,9 +25,10 @@ def differentation(the_func):
                         return expression
                         
             elif '^' not in the_func:
-                [*the_func].remove('x')
-                    
-                    
+                expression = [*the_func]
+                expression.remove('x')
+                return expression
+                               
 print (differentation(func))
 
 
