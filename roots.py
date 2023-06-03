@@ -1,9 +1,14 @@
 def splitter(the_func):
     expression = []
-    symbols = []
+    i = 0
+    symbols = ['']
     for_plus = the_func.split('+')
-    for for_minus in for_plus:
-        expression = expression + for_minus.split('-')
+    # for for_minus in for_plus:
+    #     if for_plus[i] != '-':
+    #         expression = expression + for_minus.split('-')
+    #     elif for_plus[i] == '-':
+    #         for_plus[i+1] = '-' + for_plus[i+1]
+    #     i += 1
     the_func = [*the_func]
     for _ in the_func:
         if _ == '+' or _ == '-':
@@ -23,7 +28,7 @@ def replacer(the_func): #Removes Spaces
 def derivative(the_func):
     i =0
     if the_func.isdigit() == True:
-        return [i]
+        return [str(i)]
     else:
         the_func = [*the_func]
         for i in range(len(the_func)):
@@ -54,14 +59,12 @@ def derivative(the_func):
 
 
 func = input("enter function - ") # ax^2+bx+c
-i = 0
-differentiation = []
+
 expression, plusminus = splitter(func)
-for _ in expression:
-    differentiation = derivative(_)
-    # differentiation = ''.join(differentiation)
-    
-    print (differentiation)
+# i = 0
+# differentiation = []
+# for i in range(len(expression)):
+#     differentiation = differentiation + [plusminus[i]] + derivative(expression[i])
+#     print (''.join(differentiation))
 
-# print(derivative(replacer(func)))
-
+print(expression)
