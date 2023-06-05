@@ -25,7 +25,7 @@ def replacer(the_func, remove_square = False): #Removes Spaces
             if char != chr(32):
                 clear_func = clear_func + [char]
         clear_func = ''.join(clear_func)
-    else:
+    if remove_square == True:
         for i in range(len(the_func)):
             if the_func[i]== '^':
                 the_func[i] = '**'
@@ -80,11 +80,37 @@ def final_derivative(the_func):
     differentiation = replacer(''.join(differentiation), True)
     return differentiation
 
+def add_multiplier(the_func):
+    the_func = [*the_func]
+    for i in range(len(the_func)):
+        if the_func[i] == 'x':
+            if i==0 and the_func[0] == 'x' or (the_func[i-1] =='+' or the_func[i-1] =='-'):
+                continue
+            else:
+                the_func[i] = '*x'
+    return ''.join(the_func)
 
 
+
+print("Give the EQUATION in the form of ---->   ax^2 + bx + c")
 func = input("enter function - ") # ax^2+bx+c
-equation = replacer(func, True)
-derivation = final_derivative(func)
+equation = add_multiplier(replacer(replacer(func), True))
+derivation = add_multiplier(final_derivative(func))
 
-print(equation)
-print(derivation)
+# print(equation)
+# print(derivation)
+
+x=0.01
+print ("{} ------ is the initial value of x".format(x))
+while True:
+    b = x
+    try:
+        x = x - eval(equation)/eval(derivation)
+        print (x)
+    except:
+        print("Something looks wrong check given equation")
+
+    if str(b)[:7] == str(x)[:7]:
+        break
+    
+print ("{:.4f} ------ is the Root of this equation".format(x))
