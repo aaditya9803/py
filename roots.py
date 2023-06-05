@@ -111,6 +111,5 @@ while True:
         print("Something looks wrong check given equation")
 
     if str(b)[:7] == str(x)[:7]:
+        print ("{:.4f} ------ is the Root of this equation".format(x))
         break
-    
-print ("{:.4f} ------ is the Root of this equation".format(x))
