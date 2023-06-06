@@ -1,3 +1,6 @@
+# splitter() function takes the equation as argument and returns tuple of two lists.
+# One list is of the equation after splitting the_func in places of ‘+’ and '-‘.   
+# Another list is of the ‘+’ and ‘-‘ in the same order .
 def splitter(the_func):
     expression = []
     i = 0
@@ -68,6 +71,10 @@ def derivative(the_func):
                 return expression
 
 
+# final_derivative() function passes equation as argument to derivative() function and gets derivative as the list. 
+# And uses replacer() function to replace ‘^’ symbol with ‘**’ and remove spaces. 
+# which then is merged with symbols  list (‘+’ and ‘-‘ ) returned by the splitter function. 
+# And returns the full derivative equation as a string.
 def final_derivative(the_func):
     the_func = replacer(the_func)
     expression, plusminus = splitter(the_func)
@@ -80,6 +87,10 @@ def final_derivative(the_func):
     differentiation = replacer(''.join(differentiation), True)
     return differentiation
 
+
+# addmultiplier() takes the value returned by final_derivative() as the argument.
+# then checks if ‘x’ and any integer is together (which is not accepted by python’s eval() function)
+# if found any multiply symbol ‘*’ is added and returned as a string which can now be accepted in eval() function.
 def add_multiplier(the_func):
     the_func = [*the_func]
     for i in range(len(the_func)):
@@ -96,20 +107,23 @@ print("Give the EQUATION in the form of ---->   ax^2 + bx + c")
 func = input("enter function - ") # ax^2+bx+c
 equation = add_multiplier(replacer(replacer(func), True))
 derivation = add_multiplier(final_derivative(func))
-
-# print(equation)
-# print(derivation)
-
+# Initial value of x is set 0.01
 x=0.01
+j=0
 print ("{} ------ is the initial value of x".format(x))
 while True:
+    j += 1
     b = x
     try:
         x = x - eval(equation)/eval(derivation)
         print (x)
     except:
         print("Something looks wrong check given equation")
-
+# setting max limit to 100 
     if str(b)[:7] == str(x)[:7]:
         print ("{:.4f} ------ is the Root of this equation".format(x))
         break
+    if j == 100:
+        print ("there is no real root for this equation")
+        break
+    
